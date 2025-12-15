@@ -124,7 +124,8 @@ def report(
         f.write(f"- Слишком мало строк: **{quality_flags['too_few_rows']}**\n")
         f.write(f"- Слишком много колонок: **{quality_flags['too_many_columns']}**\n")
         f.write(f"- Слишком много пропусков: **{quality_flags['too_many_missing']}**\n")
-        f.write(f"- Слишком много нулей: **{quality_flags['too_many_zeros']}**\n\n")
+        f.write(f"- Слишком много нулей: **{quality_flags['too_many_zeros']}**\n")
+        f.write(f"- Слишком мало уникальных id: **{quality_flags['too_little_unique_id']}**\n\n")
 
         f.write("## Колонки\n\n")
         f.write("См. файл `summary.csv`.\n\n")
