@@ -28,6 +28,12 @@
 
 ## Пример запуска на uvicorn 
 
+Для синхронизации библиотек и пакетов с виртуальным окружением
+`uv sync`
+
+Для запуска тестов 
+`uv run pytest -q`
+
 Запуск сервера на localhost
 `uv run uvicorn eda_cli.api:app --port 8000`
 
