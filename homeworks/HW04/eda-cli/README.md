@@ -26,6 +26,15 @@
 
 # eda-project by FastAPI
 
+## Пример запуска на uvicorn 
+
+Запуск сервера на localhost
+`uv run uvicorn eda_cli.api:app --port 8000`
+
+Запуск скрипта
+`uv run eda-cli report ./data/example.csv`
+
+
 ## Доступные эндпоинты 
 
 `/healt` - Простейший health-check сервиса.
