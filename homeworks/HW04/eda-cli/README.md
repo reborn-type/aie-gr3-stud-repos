@@ -26,6 +26,21 @@
 
 # eda-project by FastAPI
 
+## Нужные команды для использования: 
+
+Для синхронизации библиотек и пакетов с виртуальным окружением
+`uv sync`
+
+Для запуска тестов 
+`uv run pytest -q`
+
+Запуск сервера на localhost
+`uv run uvicorn eda_cli.api:app --port 8000`
+
+Запуск скрипта
+`uv run eda-cli report ./data/example.csv`
+
+
 ## Доступные эндпоинты 
 
 `/healt` - Простейший health-check сервиса.
