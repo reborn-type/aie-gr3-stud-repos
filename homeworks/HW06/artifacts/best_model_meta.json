@@ -1,0 +1,91 @@
+{
+  "model_name": "Random Forest",
+  "test_metrics": {
+    "accuracy": 0.8968888888888888,
+    "precision": 0.9174418604651163,
+    "recall": 0.6675126903553299,
+    "F1 score": 0.7727717923604309,
+    "roc_auc": 0.9284014843916534
+  },
+  "top_features": [
+    {
+      "feature": "f16",
+      "importance_mean": 0.07780000000000005,
+      "importance_std": 0.006645299090334436
+    },
+    {
+      "feature": "f01",
+      "importance_mean": 0.031400000000000025,
+      "importance_std": 0.005607138307550479
+    },
+    {
+      "feature": "f12",
+      "importance_mean": 0.018600000000000016,
+      "importance_std": 0.0029393876913398165
+    },
+    {
+      "feature": "f23",
+      "importance_mean": 0.016200000000000013,
+      "importance_std": 0.0030594117081556736
+    },
+    {
+      "feature": "f13",
+      "importance_mean": 0.015800000000000015,
+      "importance_std": 0.0029257477676655616
+    },
+    {
+      "feature": "f19",
+      "importance_mean": 0.014600000000000012,
+      "importance_std": 0.000489897948556636
+    },
+    {
+      "feature": "f02",
+      "importance_mean": 0.01200000000000001,
+      "importance_std": 0.0034058772731852833
+    },
+    {
+      "feature": "f08",
+      "importance_mean": 0.01080000000000001,
+      "importance_std": 0.002785677655436826
+    },
+    {
+      "feature": "f11",
+      "importance_mean": 0.010600000000000009,
+      "importance_std": 0.005003998401278726
+    },
+    {
+      "feature": "f29",
+      "importance_mean": 0.01040000000000001,
+      "importance_std": 0.0018547236990991425
+    },
+    {
+      "feature": "f14",
+      "importance_mean": 0.01020000000000001,
+      "importance_std": 0.0014696938456699082
+    },
+    {
+      "feature": "f04",
+      "importance_mean": 0.01020000000000001,
+      "importance_std": 0.002315167380558047
+    },
+    {
+      "feature": "f15",
+      "importance_mean": 0.009200000000000009,
+      "importance_std": 0.0023151673805580472
+    },
+    {
+      "feature": "f07",
+      "importance_mean": 0.008800000000000007,
+      "importance_std": 0.0037094473981982845
+    },
+    {
+      "feature": "f05",
+      "importance_mean": 0.008400000000000008,
+      "importance_std": 0.0016248076809271934
+    }
+  ],
+  "training_date": "2026-01-17 21:26:09",
+  "random_state": 42,
+  "test_size": 0.25,
+  "dataset": "S06-hw-dataset-02.csv"
+}
