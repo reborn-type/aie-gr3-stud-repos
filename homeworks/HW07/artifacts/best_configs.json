@@ -1,0 +1,14 @@
+{
+  "ds1": {
+    "method": "KMeans",
+    "k_value": 2
+  },
+  "ds2": {
+    "method": "KMeans",
+    "k_value": 2
+  },
+  "ds3": {
+    "method": "KMeans",
+    "k_value": 3
+  }
+}
