@@ -1,0 +1,19 @@
+{
+  "dataset": "CIFAR10",
+  "seed": 42,
+  "model": {
+    "expirement_id": "E3",
+    "input_dim": 3072,
+    "hidden_dims": [
+      512,
+      256
+    ],
+    "dropout_p": 0.3,
+    "use_batchnorm": true
+  },
+  "optimizer": {
+    "type": "Adam",
+    "lr": 0.0003
+  },
+  "best_val_accuracy": 0.47756696431612483
+}

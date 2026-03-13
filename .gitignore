@@ -55,3 +55,8 @@ logs/
 *.tmp
 *.bak
 *.old
+
+
+homeworks/HW08-09/data/
+data/ 
+**/*.tar.gz
