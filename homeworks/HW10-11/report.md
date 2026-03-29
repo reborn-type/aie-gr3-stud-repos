@@ -1,4 +1,4 @@
-# HW10-11 – компьютерное зрение в PyTorch: CNN, transfer learning, detection/segmentation
+# HW10-11 – компьютерное зрение в PyTorch: CNN, transfer learning, detection
 
 ## 1. Кратко: что сделано
 
