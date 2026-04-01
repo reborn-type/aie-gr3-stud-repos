@@ -13,5 +13,70 @@
   "best_val_accuracy": 0.943,
   "best_val_loss": 0.215,
   "test_loss": 0.228,
-  "test_accuracy": 0.939
+  "test_accuracy": 0.939,
+  "transforms": {
+    "image_size": 224,
+    "normalization": {
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "train": {
+      "resize": 256,
+      "random_resized_crop": {
+        "size": 224,
+        "scale": [
+          0.7,
+          1.0
+        ]
+      },
+      "random_horizontal_flip_p": 0.5,
+      "to_tensor": true
+    },
+    "eval": {
+      "resize": 256,
+      "center_crop": 224,
+      "to_tensor": true
+    }
+  },
+  "preprocess": {
+    "input_size": [
+      224,
+      224
+    ],
+    "initial_resize": 256,
+    "crop_type": "CenterCrop",
+    "to_tensor": true,
+    "normalization": {
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    }
+  },
+  "augmentation": {
+    "random_resized_crop": {
+      "size": 224,
+      "scale": [
+        0.7,
+        1.0
+      ]
+    },
+    "random_horizontal_flip": {
+      "probability": 0.5
+    }
+  }
 }
