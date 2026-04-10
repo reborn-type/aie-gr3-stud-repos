@@ -60,3 +60,5 @@ logs/
 homeworks/HW08-09/data/
 data/ 
 **/*.tar.gz
+
+.venv 
