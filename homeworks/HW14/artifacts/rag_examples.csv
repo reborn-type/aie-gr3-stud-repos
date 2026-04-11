@@ -1,0 +1,33 @@
+question,answer,retrieved_sources
+Как работает cors?,"CORS (Cross-Origin Resource Sharing) – механизм безопасности браузера. Работает по модели клиент-сервер: клиент (браузер) отправляет запрос (request), сервер отвечает ответом (response).","[Источник: doc_08 | JavaScript async/await | score=0.3708]
+async/await – синтаксический сахар над Promise. async function всегда возвращает Promise. await приостанавливает выполнение до resolve. try/catch для обработки ошибок. Promise.all для параллельного выполнения. Деструктуризация:
+
+[Источник: doc_01 | Что такое HTTP протокол | score=0.1941]
+Работает по модели клиент-сервер: клиент (браузер) отправляет запрос (request), сервер отвечает ответом (response). Методы: GET (получение), POST (создание), PUT (обновление), DELETE (удаление). Статусы: 200 OK,
+
+[Источник: doc_08 | JavaScript async/await | score=0.1778]
+resolve. try/catch для обработки ошибок. Promise.all для параллельного выполнения. Деструктуризация: const { data } = await response.json()."
+Для чего нужна CEO аналитика страницы?,Coverage для неиспользуемого CSS/JS.,"[Источник: doc_08 | JavaScript async/await | score=0.3708]
+async/await – синтаксический сахар над Promise. async function всегда возвращает Promise. await приостанавливает выполнение до resolve. try/catch для обработки ошибок. Promise.all для параллельного выполнения. Деструктуризация:
+
+[Источник: doc_01 | Что такое HTTP протокол | score=0.1941]
+Работает по модели клиент-сервер: клиент (браузер) отправляет запрос (request), сервер отвечает ответом (response). Методы: GET (получение), POST (создание), PUT (обновление), DELETE (удаление). Статусы: 200 OK,
+
+[Источник: doc_08 | JavaScript async/await | score=0.1778]
+resolve. try/catch для обработки ошибок. Promise.all для параллельного выполнения. Деструктуризация: const { data } = await response.json()."
+Как работает ассинхронность в JavaScript?,В найденном контексте нет достаточно релевантного фрагмента для уверенного ответа.,"[Источник: doc_08 | JavaScript async/await | score=0.3708]
+async/await – синтаксический сахар над Promise. async function всегда возвращает Promise. await приостанавливает выполнение до resolve. try/catch для обработки ошибок. Promise.all для параллельного выполнения. Деструктуризация:
+
+[Источник: doc_01 | Что такое HTTP протокол | score=0.1941]
+Работает по модели клиент-сервер: клиент (браузер) отправляет запрос (request), сервер отвечает ответом (response). Методы: GET (получение), POST (создание), PUT (обновление), DELETE (удаление). Статусы: 200 OK,
+
+[Источник: doc_08 | JavaScript async/await | score=0.1778]
+resolve. try/catch для обработки ошибок. Promise.all для параллельного выполнения. Деструктуризация: const { data } = await response.json()."
+Что такое замыкания?,В найденном контексте нет достаточно релевантного фрагмента для уверенного ответа.,"[Источник: doc_08 | JavaScript async/await | score=0.3708]
+async/await – синтаксический сахар над Promise. async function всегда возвращает Promise. await приостанавливает выполнение до resolve. try/catch для обработки ошибок. Promise.all для параллельного выполнения. Деструктуризация:
+
+[Источник: doc_01 | Что такое HTTP протокол | score=0.1941]
+Работает по модели клиент-сервер: клиент (браузер) отправляет запрос (request), сервер отвечает ответом (response). Методы: GET (получение), POST (создание), PUT (обновление), DELETE (удаление). Статусы: 200 OK,
+
+[Источник: doc_08 | JavaScript async/await | score=0.1778]
+resolve. try/catch для обработки ошибок. Promise.all для параллельного выполнения. Деструктуризация: const { data } = await response.json()."

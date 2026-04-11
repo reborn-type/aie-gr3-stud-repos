@@ -1,0 +1,3 @@
+query,before_retrieved_sources,after_retrieved_sources,changed
+Для чего нужен DOM манипуляции?,"doc_17, doc_13, doc_23","doc_06, doc_01, doc_25","Поменялись все, используемые документы"
+Как работает сео аналитика для спа?,"doc_06, doc_01, doc_25","doc_17, doc_13, doc_23","Поменялись все, используемые документы"
