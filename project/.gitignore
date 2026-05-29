@@ -43,21 +43,17 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-artifacts/
-**/artifacts/
-**/checkpoints/
-**/checkpoint-*/
-*.joblib
-*.pkl
-*.pickle
-*.pt
-*.pth
-*.ckpt
-*.safetensors
-*.onnx
-*.bin
-*.h5
-*.keras
+
+checkpoint*
+**/artifacts/**/*.safetensors
+**/artifacts/**/optimizer.pt
+**/artifacts/**/pytorch_model*.bin
+**/artifacts/**/model.pt
+**/artifacts/**/model.pth
+**/artifacts/**/*.ckpt
+**/artifacts/**/*.onnx
+**/artifacts/**/*.h5
+**/artifacts/**/*.keras
 .ipynb_checkpoints/
 
 
