@@ -1,0 +1,29 @@
+paths:
+  configs_dir: configs
+  env_file: configs/.env
+
+  data_dir: data
+  dataset: data/dataset.csv
+  it_support_dataset: data/IT Support Ticket Data.csv
+
+  artifacts_dir: artifacts
+  figures_dir: artifacts/figures
+
+  exp01_dir: artifacts/exp01_baseline
+  exp01_figures_dir: artifacts/exp01_baseline/figures
+  exp01_models_dir: artifacts/exp01_baseline/models
+  exp01_confusion_matrix: artifacts/exp01_baseline/figures/confusion_matrix_baseline.png
+  exp01_baseline_model: artifacts/exp01_baseline/models/baseline_tfidf_logreg.joblib
+
+  bert_finetuning_dir: artifacts/bert_finetuning
+  final_model_dir: artifacts/bert_finetuning/final_model
+
+  exp02_dir: artifacts/bert_finetuning_test
+  exp02_checkpoints_dir: artifacts/bert_finetuning_test/checkpoints
+  exp02_test_model_dir: artifacts/bert_finetuning_test/test_model
+
+  exp03_dir: artifacts/exp03_model_comparison
+  exp03_figures_dir: artifacts/exp03_model_comparison/figures
+  exp03_tables_dir: artifacts/exp03_model_comparison/tables
+  exp03_metrics_csv: artifacts/exp03_model_comparison/tables/metrics_comparison.csv
+  exp03_confusion_matrices: artifacts/exp03_model_comparison/figures/confusion_matrices.png

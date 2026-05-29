@@ -1,0 +1,20 @@
+random_state: 42
+
+model:
+  name: DeepPavlov/rubert-base-cased-conversational
+  max_length: 128
+
+split:
+  test_size: 0.25
+  validation_size: 0.25
+  stratify: true
+
+training:
+  learning_rate: 3e-5
+  train_batch_size: 1
+  eval_batch_size: 1
+  gradient_accumulation_steps: 8
+  epochs: 3
+  logging_steps: 10
+  report_to: none
+  use_cpu: true

@@ -1,0 +1,41 @@
+services:
+  db:
+    image: postgres:16
+    container_name: appeal_db
+    environment:
+      POSTGRES_DB: appeal_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+
+  backend:
+    image: againrbrn/appeal-backend:latest
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: appeal_backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://postgres:postgres@db:5432/appeal_db
+    volumes:
+      - ./backend/artifacts:/app/artifacts:ro
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  frontend:
+    image: againrbrn/appeal-frontend:latest
+    build:
+      context: ./frontend/my-app
+      dockerfile: Dockerfile
+    container_name: appeal_frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

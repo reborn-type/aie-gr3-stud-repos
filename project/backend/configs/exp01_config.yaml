@@ -1,0 +1,16 @@
+random_state: 42
+
+split:
+  test_size: 0.25
+  validation_size: 0.25
+  stratify: true
+
+tfidf:
+  analyzer: word
+  ngram_range: [1, 2]
+  max_feauters: 30000
+
+logistic_regression:
+  max_iter: 1000
+  class_weight: balanced
+  random_state: 42
