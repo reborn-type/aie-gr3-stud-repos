@@ -80,16 +80,15 @@ source .venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 
-# Создать файл окружения и указать в нем свою базу данных
-cp configs/.env.example configs/.env
+# Если запускаете без Docker, создайте файл окружения и укажите свою базу данных
+cp backend/configs/.env.example backend/configs/.env
 
-# Применить миграции
-cd src
+# Для локального запуска без Docker миграции применяются вручную
+cd backend/src
 python -m alembic upgrade head
 
-# Либо если используется docer-compose из корня проекта (когда контейнеры уже подняты)
-
-docker compose exec backend python -m alembic upgrade head
+# При запуске через docker compose база создается автоматически,
+# а backend сам выполняет alembic upgrade head перед стартом API.
 ```
 ---
 
@@ -134,6 +133,13 @@ python -m pytest
 cd project
 docker compose up --build
 ```
+
+При запуске через Docker Compose:
+
+- Postgres сам создает базу `appeal_db` при первом старте контейнера `db`.
+- Данные Postgres хранятся в Docker named volume `project_postgres_data`, а не в папке проекта.
+- Backend ждет готовности Postgres, создает базу если ее нет, выполняет `alembic upgrade head` и только после этого запускает API.
+- Вручную выполнять `docker compose exec backend python -m alembic upgrade head` не нужно.
 
 Опишите:
 
@@ -180,7 +186,7 @@ pytest
 
 1. Кратко покажу структуру проекта (`backend`, `frontend`, `backend/src`).
 2. Запущу сервис с помощью docker-compose написав в терминале `docker compose up --build` и открою web-интерфейс для демонстрации создания обращений
-3. Обновлю миграцию бд из папки backend/ с помощью `docker compose exec backend python -m alembic upgrade head`
+3. Покажу, что backend автоматически применяет миграции Alembic при старте контейнера.
 4. Покажу ноутбук с основными экспериментами.
 5. А также продемонстрирую cоздание обращений с помощью web-интерфейса и через swagger-ui и покажу ответы сервиса, а именно создание обращений с предсказаным отделом. 
 
