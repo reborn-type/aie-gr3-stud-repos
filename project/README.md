@@ -40,7 +40,8 @@
 - `data/` – учебные данные:
   - Открытый и обезличенный датасет по банковским обращениям на русском языке для обучения модели. 
 - `configs/` – конфигурационные файлы:
-  - `.yaml`, `.json`, `.env.example`
+  - `.yaml` - yaml файлы с директориями и гиперпараметрами для обучения моделей
+  - `.env.example` - пример заполнения DATABASE_URL для Alembic, необходимо скопировать его и заполнить чтобы сервис работал. 
 - `tests/` – pytest тесты.
 - `artifacts/` – сохранённые модели, отчёты, результаты экспериментов.
 - `frontend/` - Все папки и файлы связанные с организацией и запуском части frontend приложения.
@@ -69,7 +70,7 @@
 # Перейти в папку проекта
 cd project
 # Создать виртуальное окружение (опционально, но рекомендуется)
-python -m venv .venv
+python3 -m venv .venv
 # Активировать окружение:
 # Windows:
 .venv\Scripts\activate
@@ -77,10 +78,11 @@ python -m venv .venv
 source .venv/bin/activate
 
 # Установить зависимости
-pip install --upgrade pip
-pip install -r requirements.txt
+python -m pip install --upgrade pip
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install --no-cache-dir -r backend/requirements.txt
 
-# Если запускаете без Docker, создайте файл окружения и укажите свою базу данных
+# Создайте файл окружения и укажите свою базу данных, это обязательно для работы сервиса, без бд он просто упадет.
 cp backend/configs/.env.example backend/configs/.env
 
 # Для локального запуска без Docker миграции применяются вручную
@@ -98,9 +100,9 @@ python -m alembic upgrade head
 ### 4.1. Запуск обучения модели
 
 ```bash
-cd project/backend
+cd project
 source .venv/bin/activate 
-python src/models/training.py    
+python backend/src/models/training.py    
 ```
 
 ### 4.2. Запуск сервиса (API/веб-интерфейс)
@@ -111,15 +113,16 @@ python src/models/training.py
 cd project
 source .venv/bin/activate
 
-# Запустить бекенд находясь в директории backend / 
-python -m uvicorn app:app --reload --port 8000
+# Запустить бекенд находясь в директории backend/src/ 
+cd backend
+cd src
+python -m uvicorn app:app --reload --port 8080
+
 
 # В отдельном терминале перейти в project/frontend/my-app/ 
 cd project/frontend/my-app
-
 # Установить зависимости npm
 npm install
-
 # Запустить фронтенд
 npm run dev
 
@@ -140,12 +143,15 @@ docker compose up --build
 - Данные Postgres хранятся в Docker named volume `project_postgres_data`, а не в папке проекта.
 - Backend ждет готовности Postgres, создает базу если ее нет, выполняет `alembic upgrade head` и только после этого запускает API.
 - Вручную выполнять `docker compose exec backend python -m alembic upgrade head` не нужно.
+- После первой сборки для обычного запуска используйте `docker compose up`, а `docker compose up --build` запускайте только после изменения Dockerfile или зависимостей.
 
-Опишите:
 
-- на каком порту поднимается сервис;
-- какие эндпоинты есть (минимум – 1-2 ключевых);
-- как протестировать работоспособность (например, запрос через `curl` или браузер).
+Важно! В случае если нужно запустить `notebooks` должен быть создан .venv со всеми установленными зависимостями, в корне `project/`, чтобы выбрать правильный kernel и успешно запустить ноутбуки для артефактов, нужно в VSC открыть папку project как основную, иначе kernel может не видеть корректное виртуальное окружение со всеми зависимостями. 
+
+
+- Сервис бекенда поднимается на порту 8080, в докере порт 8000, открыть фронтенд можно на порту 5173. 
+- У бекенда есть 5 эндпоинтов почти все они с префиксом `/appeals/`, кроме `/health` - healthcheck сервиса, `/docs` - swagger документация, основной эндпоинт это POST `appeals/predict` - в нем лежит предсказание отдела и создание обращение, также есть эндпоинты для работы с обращениями это DELETE `appeals/` - удаление всех обращений из бд, GET `appeals/` получение всех обращений, GET `appeals/{appeal_id}` - для получения определенного обращения по id, DELETE `appeals/{appeal_id}` - для удаления обращения по id. 
+- Протестировать работоспособность можно через curl или docker обращаясь по адресу `http://localhost:8080`, а также можно открыть swagger-ui документацию по адрессу `http://localhost:8080/docs`. 
 
 ---
 
@@ -166,15 +172,15 @@ docker compose up --build
 Если вы добавляете тесты:
 
 - Есть pipeline sanity tests в `test_dataset.py` в качестве проверки пригодности датасета для пайплайна, inference unit test в `test_inference.py` проверка инференса модели, service_tests в `test_api.py` для проверки эндпоинтов, и sanity_check для проверки ответов от 0 до 1. 
-- Находясь в папке backend/ с активированным venv, нужно написать `pytest` в консоль
+- Находясь в папке backend/ с активированным venv и установленными в нем зависимостями из `requirments.txt`, нужно написать `pytest` в консоль
 - Если виртуальное окружение не активно, но Вы находитесь в backend/, тогда `python -m pytest`
 
 Пример:
 
 ```bash
 cd project
-cd backend
 source .venv/bin/activate
+cd backend
 pytest
 ```
 
@@ -186,9 +192,8 @@ pytest
 
 1. Кратко покажу структуру проекта (`backend`, `frontend`, `backend/src`).
 2. Запущу сервис с помощью docker-compose написав в терминале `docker compose up --build` и открою web-интерфейс для демонстрации создания обращений
-3. Покажу, что backend автоматически применяет миграции Alembic при старте контейнера.
-4. Покажу ноутбук с основными экспериментами.
-5. А также продемонстрирую cоздание обращений с помощью web-интерфейса и через swagger-ui и покажу ответы сервиса, а именно создание обращений с предсказаным отделом. 
+3. Покажу ноутбук с основными экспериментами.
+3. А также продемонстрирую cоздание обращений с помощью web-интерфейса и через swagger-ui и покажу ответы сервиса, а именно создание обращений с предсказаным отделом. 
 
 ---
 

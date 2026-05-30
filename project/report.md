@@ -133,12 +133,12 @@
    10. Отображение результата на frontend
 
 2. **API и endpoints:**
-   - реализованы endpoints: POST /predict, GET /health, DELETE /, GET /{appeal_id}, DELETE /{appeal_id}, при этом всем, у всех эндпоинтов по умолчанию идет префикс /appeals, кроме health. 
+   - реализованы endpoints: POST /predict, GET /health, DELETE /, GET /{appeal_id}, DELETE /{appeal_id}, при этом всем, у всех эндпоинтов по умолчанию идет префикс /appeals, кроме health и docs. 
    - `/predict` принимает параметры: `title` и `text`, возвращает title, text, department, percent_of_confidence
 
 3. **Технологический стек:**
    - Используются такие библиотеки и фреймворки как: FastAPI, Alembic, Pydantic, matplotlib.pyplot, pathlib, typing, datasets, numpy, sklearn, torch, pandas, pytest, types. Для фронтенда используется: React + Vite, axios, module.css; 
-   - docker-compose используется для быстрого запуска приложения, для того чтобы запустить, нужно создать .env в configs/ с DB_URL, а после находясь в папке backend , в терминале написать `docker compose up --build`, docker сам поднимит фронтенд, бекенд и базу данных
+   - docker-compose используется для быстрого запуска приложения, для того чтобы запустить, нужно создать .env в configs/ с DATABASEB_URL, а после находясь в папке project, в терминале написать `docker compose up --build`, docker сам поднимит фронтенд, бекенд и базу данных
 
 ---
 
